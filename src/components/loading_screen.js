@@ -7,7 +7,7 @@ const Loading = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowLoading(false);
-        }, 3000);
+        }, 5000);
 
         return () => clearTimeout(timer);
     }, []);
@@ -18,7 +18,10 @@ const Loading = () => {
 
     return (
         <>
-            <img src={require(`../images/logo.svg`).default} alt="logo"></img>
+            <div className={"loading_container"}>
+                <img className={"loading_logo"}  src={require(`../images/logo.svg`).default} alt="logo"></img>
+                <div className="loading_spinner"></div>
+            </div>
         </>
     );
 };
