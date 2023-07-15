@@ -1,0 +1,56 @@
+.login-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  margin-bottom: 20px;
+}
+
+.register-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.button-container {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.singIn {
+  background-color: transparent;
+  border: none;
+  color: white;
+  margin-top: 130px;
+}
+.login {
+  height: 30px;
+  width: 100px;
+  border: none;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+}
+.shortLogo {
+  margin-bottom: -60px;
+
+}
+
+.email, .password {
+  background-color: transparent;
+  border: none;
+  border-bottom: 2px solid white;
+  margin-bottom: 30px;
+  text-align: center;
+  color: white;
+  outline: none;
+}
+
+.error {
+  color: red;
+}
