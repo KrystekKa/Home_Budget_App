@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
+import Logout from "./logout";
 
 export default function Menu() {
     const [showMenu, setShowMenu] = useState(false);
@@ -54,7 +55,7 @@ export default function Menu() {
                         <a href="#">Kontakt</a>
                     </li>
                     <li>
-                        <a href="#">Wyloguj</a>
+                        <Logout />
                     </li>
                 </ul>
             </div>
