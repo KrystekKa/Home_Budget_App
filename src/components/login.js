@@ -9,13 +9,26 @@ const Login = () => {
     const [showForm, setShowForm] = useState(false);
     const [showRegisterForm, setShowRegisterForm] = useState(false);
     const [error, setError] = useState('');
+    const [isLoggedIn, setIsLoggedIn] = useState(false);
+
 
     useEffect(() => {
+        const unsubscribe = auth.onAuthStateChanged((user) => {
+            if (user) {
+                setIsLoggedIn(true);
+            } else {
+                setIsLoggedIn(false);
+            }
+        });
+
         const timer = setTimeout(() => {
             setShowForm(true);
-        }, 5000);
+        }, 2000);
 
-        return () => clearTimeout(timer);
+        return () => {
+            unsubscribe();
+            clearTimeout(timer);
+        };
     }, []);
 
     const handleEmailChange = (e) => {
@@ -41,6 +54,7 @@ const Login = () => {
         signInWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log('Zalogowano');
+                setIsLoggedIn(true);
             })
             .catch((error) => {
                 setError('Adres e-mail lub hasło nie są poprawne');
@@ -90,19 +104,23 @@ const Login = () => {
         createUserWithEmailAndPassword(auth, email, password)
             .then((userCredential) => {
                 console.log('Zarejestrowano');
+                setIsLoggedIn(true);
             })
             .catch((error) => {
                 console.log('Błąd rejestracji:', error.message);
             });
     };
 
-    if (!showForm) {
+    if (isLoggedIn) {
+        return null;
+    } else if (!showForm) {
         return (
             <div className="loading-card">
 
             </div>
         );
     }
+
 
     if (showRegisterForm) {
         return (
@@ -138,5 +156,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
