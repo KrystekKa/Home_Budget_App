@@ -7,7 +7,7 @@ const Loading = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setShowLoading(false);
-        }, 5000);
+        }, 2000);
 
         return () => clearTimeout(timer);
     }, []);
