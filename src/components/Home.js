@@ -1,5 +1,6 @@
 import '../css/App.scss';
 import React from 'react';
+import { Link } from 'react-router-dom';
 import Menu from "./Menu";
 
 export default function Home() {
@@ -11,7 +12,9 @@ export default function Home() {
               <h2 className={"budget_sum"}>2222 zł</h2>
             </div>
             <div className={"home_buttons"}>
-                <a href="#" className={"add_wallet btn"}>Dodaj portfel</a>
+                <Link to="/add_wallet" className={"add_wallet btn"}>
+                    Dodaj portfel
+                </Link>
                 <a href="#" className={"add_expense btn"}>Dodaj wydatek</a>
             </div>
             <p className={"last_expense_title"}>Ostatnie wydatki</p>
