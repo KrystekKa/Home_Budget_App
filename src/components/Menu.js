@@ -57,6 +57,9 @@ export default function Menu() {
                     <li>
                         <Logout />
                     </li>
+                    <li>
+                        <a href="#">Portfele</a>
+                    </li>
                 </ul>
             </div>
         </nav>
