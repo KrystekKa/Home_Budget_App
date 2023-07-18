@@ -6,6 +6,7 @@ import Login from "./login";
 import Home from "./Home";
 import AddWallet from "./Add_wallet";
 import { onAuthStateChanged, auth } from './firebase';
+import AddExpense from "./Add_expense";
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -32,6 +33,7 @@ function App() {
                 <Routes>
                     <Route path="/" element={<Home />} />
                     <Route path="/add_wallet" element={<AddWallet />} />
+                    <Route path="/add_expense" element={<AddExpense />} />
                 </Routes>
             ) : (
                 <Login />

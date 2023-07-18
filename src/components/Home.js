@@ -15,7 +15,9 @@ export default function Home() {
                 <Link to="/add_wallet" className={"add_wallet btn"}>
                     Dodaj portfel
                 </Link>
-                <a href="#" className={"add_expense btn"}>Dodaj wydatek</a>
+                <Link to="/add_expense" className={"add_expense btn"}>
+                    Dodaj wydatek
+                </Link>
             </div>
             <p className={"last_expense_title"}>Ostatnie wydatki</p>
             <div className={"last_expense"}>
