@@ -2,24 +2,16 @@ import React, { useState, useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from './firebase';
 import Logout from "./logout";
+import {Link} from "react-router-dom";
 
 export default function Menu() {
-    const [showMenu, setShowMenu] = useState(false);
-    const [isLoading, setIsLoading] = useState(true);
+    const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
-
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setIsLoading(false);
-        }, 2000);
-
-        return () => clearTimeout(timer);
-    }, []);
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (user) => {
             if (user) {
-                setShowMenu(true);
+                setIsUserLoggedIn(true);
             }
         });
 
@@ -29,14 +21,8 @@ export default function Menu() {
     }, []);
 
     const handleClick = () => {
-        const navbarLinks = document.getElementsByClassName('navbar-links')[0];
-        navbarLinks.classList.toggle('active');
         setIsOpen(!isOpen);
     };
-
-    if (isLoading || !showMenu) {
-        return null;
-    }
 
     return (
         <nav className="navbar">
@@ -46,22 +32,24 @@ export default function Menu() {
                 <span className="bar"></span>
                 <span className="bar"></span>
             </a>
-            <div className="navbar-links">
-                <ul>
-                    <li>
-                        <a href="#">Strona główna</a>
-                    </li>
-                    <li>
-                        <a href="#">Kontakt</a>
-                    </li>
-                    <li>
-                        <Logout />
-                    </li>
-                    <li>
-                        <a href="#">Portfele</a>
-                    </li>
-                </ul>
-            </div>
+            {isUserLoggedIn && (
+                <div className={`navbar-links ${isOpen ? 'active' : ''}`}>
+                    <ul>
+                        <li>
+                            <Link to="/">Strona główna</Link>
+                        </li>
+                        <li>
+                            <a href="#">Kontakt</a>
+                        </li>
+                        <li>
+                            <Logout />
+                        </li>
+                        <li>
+                            <a href="#">Portfele</a>
+                        </li>
+                    </ul>
+                </div>
+            )}
         </nav>
     );
 }

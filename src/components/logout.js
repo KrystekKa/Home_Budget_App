@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { signOut } from 'firebase/auth';
 import { auth } from './firebase';
+import { Navigate } from 'react-router-dom';
 
 const Logout = () => {
     const [isLoggedOut, setIsLoggedOut] = useState(false);
@@ -9,9 +10,6 @@ const Logout = () => {
         signOut(auth)
             .then(() => {
                 setIsLoggedOut(true);
-                setTimeout(() => {
-                    window.location.reload();
-                }, 0);
             })
             .catch((error) => {
                 console.log('Błąd podczas wylogowywania:', error.message);
@@ -19,7 +17,7 @@ const Logout = () => {
     };
 
     if (isLoggedOut) {
-        return null
+        return <Navigate to="/login" />;
     }
 
     return (
@@ -28,6 +26,7 @@ const Logout = () => {
 };
 
 export default Logout;
+
 
 
 
