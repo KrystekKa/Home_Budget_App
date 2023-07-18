@@ -11,7 +11,6 @@ const Login = () => {
     const [error, setError] = useState('');
     const [isLoggedIn, setIsLoggedIn] = useState(false);
 
-
     useEffect(() => {
         const unsubscribe = auth.onAuthStateChanged((user) => {
             if (user) {
@@ -21,13 +20,10 @@ const Login = () => {
             }
         });
 
-        const timer = setTimeout(() => {
-            setShowForm(true);
-        }, 2000);
+        setShowForm(true);
 
         return () => {
             unsubscribe();
-            clearTimeout(timer);
         };
     }, []);
 
@@ -120,7 +116,6 @@ const Login = () => {
             </div>
         );
     }
-
 
     if (showRegisterForm) {
         return (
