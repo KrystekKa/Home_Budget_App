@@ -1,6 +1,5 @@
-// AddWallet.js
 import React, { useState } from "react";
-import "../css/_add_wallet.scss"; // Zaimportowano AddWallet.scss zamiast App.scss
+import "../css/_add_wallet.scss";
 import Menu from "./Menu";
 
 export default function AddWallet() {
@@ -12,9 +11,8 @@ export default function AddWallet() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        // Przetwarzanie danych (np. wysłanie do serwera)
+
         console.log("Nazwa portfela:", walletName);
-        // Możesz dodać logikę przekierowania lub resetowania formularza po zakończeniu przetwarzania danych
     };
 
     return (
