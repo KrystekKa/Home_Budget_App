@@ -1,0 +1,23 @@
+
+
+.wallets {
+  font-size: 25px;
+  li {
+    border-top: 2px solid #ffa100;
+    padding: 10px;
+    width: 65vw;
+  }
+  li:last-child {
+    border-bottom: 2px solid #ffa100;
+  }
+}
+.my_wallets {
+  text-align: center;
+}
+
+.wallets_list {
+  list-style-type: none;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+}
