@@ -8,6 +8,8 @@ import AddWallet from "./Add_wallet";
 import { onAuthStateChanged, auth } from './firebase';
 import AddExpense from "./Add_expense";
 import Wallets from "./Wallets";
+import { MoneyProvider } from "./MoneyContext";
+
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
@@ -28,18 +30,20 @@ function App() {
     }
 
     return (
-        <Router>
-            {isUserLoggedIn ? (
-                <Routes>
-                    <Route path="/" element={<Home />} />
-                    <Route path="/add_wallet" element={<AddWallet />} />
-                    <Route path="/add_expense" element={<AddExpense />} />
-                    <Route path="/wallets" element={<Wallets />} />
-                </Routes>
-            ) : (
-                <Login />
-            )}
-        </Router>
+        <MoneyProvider>
+            <Router>
+                {isUserLoggedIn ? (
+                    <Routes>
+                        <Route path="/" element={<Home />} />
+                        <Route path="/add_wallet" element={<AddWallet />} />
+                        <Route path="/add_expense" element={<AddExpense />} />
+                        <Route path="/wallets" element={<Wallets />} />
+                    </Routes>
+                ) : (
+                    <Login />
+                )}
+            </Router>
+        </MoneyProvider>
     );
 }
 

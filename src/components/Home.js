@@ -1,15 +1,19 @@
-import '../css/App.scss';
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React from "react";
+import { Link } from "react-router-dom";
 import Menu from "./Menu";
+import { useTotalMoney } from "./MoneyContext";
 
 export default function Home() {
+    const totalMoneyString = useTotalMoney();
+    const totalMoney = parseFloat(totalMoneyString);
+    const formattedTotalMoney = isNaN(totalMoney) ? "0.00" : totalMoney.toFixed(2);
+
     return (
         <>
-        <Menu />
+            <Menu />
             <div className={"home_title"}>
-              <h1 className={"budget"}>Dostępne środki</h1>
-              <h2 className={"budget_sum"}>2222 zł</h2>
+                <h1 className={"budget"}>Dostępne środki</h1>
+                <h2 className={"budget_sum"}>{formattedTotalMoney} zł</h2>
             </div>
             <div className={"home_buttons"}>
                 <Link to="/add_wallet" className={"add_wallet btn"}>
@@ -29,3 +33,5 @@ export default function Home() {
         </>
     );
 }
+
+

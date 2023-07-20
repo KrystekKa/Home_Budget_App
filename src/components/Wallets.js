@@ -3,11 +3,14 @@ import Menu from "./Menu";
 import { database, ref, onValue, update } from "./firebase";
 import { auth } from "./firebase";
 import "../css/_wallets.scss";
+import { useTotalMoney } from "./MoneyContext";
 
 export default function Wallets() {
     const [wallets, setWallets] = useState([]);
     const [editIndex, setEditIndex] = useState(-1);
     const [editedMoney, setEditedMoney] = useState("");
+    const totalMoneyString = useTotalMoney();
+    const totalMoney = parseFloat(totalMoneyString);
 
     useEffect(() => {
         const user = auth.currentUser;
@@ -17,7 +20,10 @@ export default function Wallets() {
             const unsubscribe = onValue(walletsRef, (snapshot) => {
                 const data = snapshot.val();
                 if (data) {
-                    const walletList = Object.entries(data).map(([id, wallet]) => ({ id, ...wallet }));
+                    const walletList = Object.entries(data).map(([id, wallet]) => ({
+                        id,
+                        ...wallet,
+                    }));
                     setWallets(walletList);
                 } else {
                     setWallets([]);
@@ -67,12 +73,16 @@ export default function Wallets() {
                                         value={editedMoney}
                                         onChange={(e) => setEditedMoney(e.target.value)}
                                     />
-                                    <button className={"wallet_btn"} onClick={() => handleSave(wallet.id, editedMoney)}>Zapisz</button>
+                                    <button className={"wallet_btn"} onClick={() => handleSave(wallet.id, editedMoney)}>
+                                        Zapisz
+                                    </button>
                                 </>
                             ) : (
                                 <>
-                                    <span className="wallet_money">{wallet.money}</span>
-                                    <button className={"wallet_btn"} onClick={() => handleEdit(index)}>Edytuj</button>
+                                    <span className="wallet_money">{parseFloat(wallet.money).toFixed(2)} zł</span>
+                                    <button className={"wallet_btn"} onClick={() => handleEdit(index)}>
+                                        Edytuj
+                                    </button>
                                 </>
                             )}
                         </li>
@@ -82,6 +92,11 @@ export default function Wallets() {
         </>
     );
 }
+
+
+
+
+
 
 
 
