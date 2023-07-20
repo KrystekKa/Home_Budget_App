@@ -45,7 +45,7 @@ export default function Menu() {
                             <Logout />
                         </li>
                         <li>
-                            <a href="#">Portfele</a>
+                            <Link to="/wallets">Portfele</Link>
                         </li>
                     </ul>
                 </div>
