@@ -21,3 +21,19 @@
   flex-direction: column;
   align-items: start;
 }
+.wallet_item {
+  display: flex;
+  justify-content: space-between;
+}
+.money_input {
+  background-color: transparent;
+  border: 1px solid #555555;
+  font-size: 20px;
+  width: 100px;
+}
+.wallet_btn {
+  text-decoration: none;
+  padding: 10px;
+  background-color: #ffa100;
+  border-radius: 10px;
+}

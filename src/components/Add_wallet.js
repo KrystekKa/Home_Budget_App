@@ -1,46 +1,48 @@
 import React, { useState, useEffect } from "react";
 import "../css/_add_wallet.scss";
 import Menu from "./Menu";
-import { database, ref, push } from "./firebase"; // Importuj referencję do bazy danych z pliku firebase.js
-import { authStateChanged } from "./firebase"; // Importuj funkcję do nasłuchiwania zmiany stanu uwierzytelnienia
+import { database, ref, push } from "./firebase";
+import { authStateChanged } from "./firebase";
 
 export default function AddWallet() {
     const [walletName, setWalletName] = useState("");
-    const [user, setUser] = useState(null); // Dodajemy stan do przechowywania danych użytkownika
-    const [unsubscribe, setUnsubscribe] = useState(null); // Dodajemy stan do przechowywania funkcji unsubscribe
+    const [money, setMoney] = useState("");
+    const [user, setUser] = useState(null);
+    const [unsubscribe, setUnsubscribe] = useState(null);
 
     useEffect(() => {
-        // Nasłuchiwanie zmiany stanu uwierzytelnienia
         const unsubscribe = authStateChanged((user) => {
             setUser(user);
         });
 
-        // Zapisujemy funkcję unsubscribe do stanu
         setUnsubscribe(unsubscribe);
 
-        // Zwróć funkcję do wyłączenia nasłuchiwania po odmontowaniu komponentu
         return () => unsubscribe();
     }, []);
 
     const handleChange = (event) => {
-        setWalletName(event.target.value);
+        if (event.target.name === "name") {
+            setWalletName(event.target.value);
+        } else if (event.target.name === "money") {
+            setMoney(event.target.value);
+        }
     };
 
     const handleSubmit = () => {
-        // Upewnij się, że użytkownik jest zalogowany
         if (!user) {
             console.log("Użytkownik niezalogowany. Nie można zapisać danych.");
             return;
         }
 
-        // Zapisz dane do Firebase pod identyfikatorem użytkownika
         try {
             push(ref(database, `users/${user.uid}/wallets`), {
                 name: walletName,
+                money: money,
             });
 
             console.log("Nazwa portfela:", walletName);
-            setWalletName(""); // Wyczyść pole input po pomyślnym zapisie
+            setWalletName("");
+            setMoney("0");
         } catch (error) {
             console.error("Błąd podczas zapisu danych do Firebase:", error);
         }
@@ -58,6 +60,16 @@ export default function AddWallet() {
                             type="text"
                             name="name"
                             value={walletName}
+                            onChange={handleChange}
+                            className="form_input"
+                        />
+                    </label>
+                    <label className="wallet_form_label">
+                        <input
+                            placeholder="Podaj początkową kwotę"
+                            type="number"
+                            name="money"
+                            value={money}
                             onChange={handleChange}
                             className="form_input"
                         />
