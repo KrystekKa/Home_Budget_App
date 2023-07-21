@@ -76,8 +76,16 @@ export default function Wallets() {
                                 </>
                             ) : (
                                 <>
-                                    <span className={`wallet_money ${parseFloat(wallet.money) < 0 ? "minus" : "plus"}`}>{parseFloat(wallet.money).toFixed(2)} zł</span>
-                                    <button className={"wallet_btn"} onClick={() => handleEdit(index)}>
+                  <span
+                      className={`wallet_money ${parseFloat(wallet.money) < 0 ? "minus" : "plus"}`}
+                  >
+                    {parseFloat(wallet.money).toFixed(2)} zł
+                  </span>
+                                    <button
+                                        className={"wallet_btn"}
+                                        onClick={() => handleEdit(index)}
+                                        onClick={() => handleEdit(index)}
+                                    >
                                         Edytuj
                                     </button>
                                 </>
@@ -89,6 +97,7 @@ export default function Wallets() {
         </>
     );
 }
+
 
 
 
