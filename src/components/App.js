@@ -9,7 +9,7 @@ import { onAuthStateChanged, auth } from './firebase';
 import AddExpense from "./Add_expense";
 import Wallets from "./Wallets";
 import { MoneyProvider } from "./MoneyContext";
-import { ExpenseProvider } from "./ExpenseContext"; // Dodajemy import ExpenseProvider
+import { ExpenseProvider } from "./ExpenseContext";
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -32,7 +32,7 @@ function App() {
 
     return (
         <MoneyProvider>
-            <ExpenseProvider> {/* Dodajemy ExpenseProvider tutaj */}
+            <ExpenseProvider>
                 <Router>
                     {isUserLoggedIn ? (
                         <Routes>
@@ -45,7 +45,7 @@ function App() {
                         <Login />
                     )}
                 </Router>
-            </ExpenseProvider> {/* Zamknij ExpenseProvider tutaj */}
+            </ExpenseProvider>
         </MoneyProvider>
     );
 }

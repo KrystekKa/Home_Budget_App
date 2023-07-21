@@ -68,7 +68,6 @@ export default function AddExpense() {
                 parseFloat(expenseAmount);
             update(walletRef, { money: updatedMoney })
                 .then(() => {
-                    // Handle the deduction success if needed
                 })
                 .catch((error) => {
                     console.error("Error updating document:", error);

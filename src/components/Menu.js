@@ -39,13 +39,10 @@ export default function Menu() {
                             <Link to="/">Strona główna</Link>
                         </li>
                         <li>
-                            <a href="#">Kontakt</a>
+                            <Link to="/wallets">Portfele</Link>
                         </li>
                         <li>
                             <Logout />
-                        </li>
-                        <li>
-                            <Link to="/wallets">Portfele</Link>
                         </li>
                     </ul>
                 </div>

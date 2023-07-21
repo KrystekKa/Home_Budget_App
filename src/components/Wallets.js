@@ -48,7 +48,7 @@ export default function Wallets() {
                     setEditedMoney("");
                 })
                 .catch((error) => {
-                    console.error("Error updating document:", error);
+                    console.error("Błąd:", error);
                 });
         }
     };
@@ -83,7 +83,6 @@ export default function Wallets() {
                   </span>
                                     <button
                                         className={"wallet_btn"}
-                                        onClick={() => handleEdit(index)}
                                         onClick={() => handleEdit(index)}
                                     >
                                         Edytuj
