@@ -39,6 +39,7 @@ export default function Home() {
 
     return (
         <>
+            <div className="container">
             <Menu />
             <div className={"home_title"}>
                 <h1 className={"budget"}>Dostępne środki</h1>
@@ -79,6 +80,7 @@ export default function Home() {
                     )}
                     </tbody>
                 </table>
+            </div>
             </div>
         </>
     );
