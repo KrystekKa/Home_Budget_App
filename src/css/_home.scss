@@ -15,11 +15,36 @@
 }
 .last_expense {
   border-top: 3px solid #ffa100;
-  margin-right: 15px;
-  margin-left: 15px;
-  min-height: 270px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   .expenses {
+    margin-top: 15px;
     list-style-type: none;
+    .table_title {
+      font-size: 20px;
+      text-align: center;
+      th {
+        border-right: 2px solid #ffa100;
+        padding-left: 10px;
+        padding-right: 10px;
+        border-bottom: 2px solid #ffa100;
+      }
+      th:last-child {
+        border-right: none;
+      }
+    }
+    tbody {
+      .table_cell {
+        border-right: 2px solid #ffa100;
+        padding: 8px 5px 8px 5px;
+        text-align: center;
+      }
+      .table_cell:last-child {
+        border-right: none;
+      }
+    }
+
 
     .expenses_error {
       font-size: 20px;

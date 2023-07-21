@@ -9,6 +9,7 @@ import { onAuthStateChanged, auth } from './firebase';
 import AddExpense from "./Add_expense";
 import Wallets from "./Wallets";
 import { MoneyProvider } from "./MoneyContext";
+import { ExpenseProvider } from "./ExpenseContext"; // Dodajemy import ExpenseProvider
 
 function App() {
     const [isUserLoggedIn, setIsUserLoggedIn] = useState(false);
@@ -31,21 +32,24 @@ function App() {
 
     return (
         <MoneyProvider>
-            <Router>
-                {isUserLoggedIn ? (
-                    <Routes>
-                        <Route path="/" element={<Home />} />
-                        <Route path="/add_wallet" element={<AddWallet />} />
-                        <Route path="/add_expense" element={<AddExpense />} />
-                        <Route path="/wallets" element={<Wallets />} />
-                    </Routes>
-                ) : (
-                    <Login />
-                )}
-            </Router>
+            <ExpenseProvider> {/* Dodajemy ExpenseProvider tutaj */}
+                <Router>
+                    {isUserLoggedIn ? (
+                        <Routes>
+                            <Route path="/" element={<Home />} />
+                            <Route path="/add_wallet" element={<AddWallet />} />
+                            <Route path="/add_expense" element={<AddExpense />} />
+                            <Route path="/wallets" element={<Wallets />} />
+                        </Routes>
+                    ) : (
+                        <Login />
+                    )}
+                </Router>
+            </ExpenseProvider> {/* Zamknij ExpenseProvider tutaj */}
         </MoneyProvider>
     );
 }
 
 export default App;
+
 
