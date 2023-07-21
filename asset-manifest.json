@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/Home_Budget_App/static/css/main.f3debca4.css",
+    "main.js": "/Home_Budget_App/static/js/main.7ca5a624.js",
+    "static/media/logo.svg": "/Home_Budget_App/static/media/logo.9c2dbd35b195d88dc6ca3a13de702a65.svg",
+    "static/media/short_logo_hb.svg": "/Home_Budget_App/static/media/short_logo_hb.03abdd4afbdb6faafae3ffa40eb382ca.svg",
+    "index.html": "/Home_Budget_App/index.html",
+    "main.f3debca4.css.map": "/Home_Budget_App/static/css/main.f3debca4.css.map",
+    "main.7ca5a624.js.map": "/Home_Budget_App/static/js/main.7ca5a624.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f3debca4.css",
+    "static/js/main.7ca5a624.js"
+  ]
+}
