@@ -5,7 +5,7 @@
   li {
     border-top: 2px solid #ffa100;
     padding: 10px;
-    width: 65vw;
+    width: 100%;
   }
   li:last-child {
     border-bottom: 2px solid #ffa100;
@@ -24,16 +24,24 @@
 .wallet_item {
   display: flex;
   justify-content: space-between;
+  margin-left: -30px;
 }
 .money_input {
   background-color: transparent;
   border: 1px solid #555555;
   font-size: 20px;
-  width: 100px;
+  width: 150px;
 }
 .wallet_btn {
   text-decoration: none;
   padding: 10px;
   background-color: #ffa100;
+  border-color: #ffa100;
   border-radius: 10px;
+}
+.wallet_money.plus {
+  color: green;
+}
+.wallet_money.minus {
+  color: red;
 }

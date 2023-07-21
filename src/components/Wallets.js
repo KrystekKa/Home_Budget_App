@@ -3,14 +3,11 @@ import Menu from "./Menu";
 import { database, ref, onValue, update } from "./firebase";
 import { auth } from "./firebase";
 import "../css/_wallets.scss";
-import { useTotalMoney } from "./MoneyContext";
 
 export default function Wallets() {
     const [wallets, setWallets] = useState([]);
     const [editIndex, setEditIndex] = useState(-1);
     const [editedMoney, setEditedMoney] = useState("");
-    const totalMoneyString = useTotalMoney();
-    const totalMoney = parseFloat(totalMoneyString);
 
     useEffect(() => {
         const user = auth.currentUser;
@@ -79,7 +76,7 @@ export default function Wallets() {
                                 </>
                             ) : (
                                 <>
-                                    <span className="wallet_money">{parseFloat(wallet.money).toFixed(2)} zł</span>
+                                    <span className={`wallet_money ${parseFloat(wallet.money) < 0 ? "minus" : "plus"}`}>{parseFloat(wallet.money).toFixed(2)} zł</span>
                                     <button className={"wallet_btn"} onClick={() => handleEdit(index)}>
                                         Edytuj
                                     </button>
