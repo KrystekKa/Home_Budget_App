@@ -5,7 +5,7 @@
   li {
     border-top: 2px solid #ffa100;
     padding: 10px;
-    width: 100%;
+    width: 90vw;
   }
   li:last-child {
     border-bottom: 2px solid #ffa100;
@@ -44,4 +44,12 @@
 }
 .wallet_money.minus {
   color: red;
+}
+
+@media screen and (min-width: 800px){
+  .wallets {
+    li {
+      width: 60vw;
+    }
+  }
 }
