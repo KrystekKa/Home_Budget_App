@@ -50,6 +50,7 @@ export default function AddWallet() {
 
     return (
         <>
+            <div className="addWallets_container">
             <Menu />
             <h1 className={"wallet_title"}>Dodaj nowy portfel</h1>
             <div className="add_wallet_form">
@@ -78,6 +79,7 @@ export default function AddWallet() {
                         +
                     </button>
                 </form>
+            </div>
             </div>
         </>
     );

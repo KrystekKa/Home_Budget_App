@@ -112,6 +112,7 @@ export default function AddExpense() {
 
     return (
         <>
+            <div className="addExpense_container">
             <Menu />
             <h1 className={"expense_title"}>Dodaj nowy wydatek</h1>
             <div className="add_expense_form">
@@ -162,6 +163,7 @@ export default function AddExpense() {
                     <button type="submit" className="expense_submit_button"></button>
                 </form>
             </div>
+        </div>
         </>
     );
 }

@@ -49,3 +49,12 @@
   height: 50%;
   width: 8px;
 }
+
+.addWallets_container {
+  width: 90vw;
+}
+@media screen and (min-width: 800px){
+  .addWallets_container {
+    width: 60vw;
+  }
+}
